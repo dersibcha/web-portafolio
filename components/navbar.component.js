@@ -1,22 +1,22 @@
-import { ReactNode } from "react";
+import React from "react";
 import {
   Box,
   Flex,
   HStack,
-  Link,
   Button,
-  useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
 } from "@chakra-ui/react";
 
+import Link from "next/link";
+
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 
-const NavLink = ({ children }) => (
-  <Link
+const NavLink = ({ children, linkto }) => (
+  <Box
     px={2}
     py={1}
     rounded={"md"}
@@ -24,25 +24,31 @@ const NavLink = ({ children }) => (
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
     }}
-    href={"#"}
   >
-    {children}
-  </Link>
+    <Link href={linkto}>{children}</Link>
+  </Box>
 );
 
 const Navbar = () => {
-  const { locale } = useRouter();
+  const { pathname, locale } = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
   const { t } = useTranslation("common");
-  const Links = [t("about"), t("projects"), t("contact")];
+  const linksText = [t("about"), t("projects"), t("contact")];
+  const linksHref = [
+    "/" + locale,
+    "/" + locale + "/" + "projects",
+    "/" + locale + "/" + "contact",
+  ];
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={8} alignItems={"center"}>
             <HStack as={"nav"} spacing={4} display={"flex"}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {linksText.map((link, index) => (
+                <NavLink linkto={linksHref[index]} key={link}>
+                  {link}
+                </NavLink>
               ))}
             </HStack>
           </HStack>
@@ -51,9 +57,9 @@ const Navbar = () => {
             <Stack direction={{ sm: "column", md: "row" }}>
               <Stack direction={"row"} spacing={7} pr={2}>
                 {locale === "en" ? (
-                  <a href={"/es"}>{locale}</a>
+                  <a href={"/es" + "/" + pathname}>{locale}</a>
                 ) : (
-                  <a href={"/en"}>{locale}</a>
+                  <a href={"/en" + "/" + pathname}>{locale}</a>
                 )}
               </Stack>
               <Stack direction={"row"} spacing={7}>
