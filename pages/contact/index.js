@@ -1,17 +1,13 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import Navbar from "../../components/navbar.component";
+import Layout from "../../components/layout.component";
 
 const Projects = () => {
   const { t } = useTranslation("common");
   return (
-    <div>
-      <main>
-        <Navbar />
-      </main>
+    <Layout>
       <h1>Contact</h1>
-      <footer></footer>
-    </div>
+    </Layout>
   );
 };
 

@@ -45,16 +45,19 @@ const Navbar = () => {
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={8} alignItems={"center"}>
             <HStack as={"nav"} spacing={4} display={"flex"}>
+              <NavLink linkto={"/" + locale}>Logo</NavLink>
+            </HStack>
+          </HStack>
+
+          <Flex alignItems={"center"}>
+            <HStack pr={"12px"} as={"nav"} spacing={10} display={"flex"}>
               {linksText.map((link, index) => (
                 <NavLink linkto={linksHref[index]} key={link}>
                   {link}
                 </NavLink>
               ))}
             </HStack>
-          </HStack>
-
-          <Flex alignItems={"center"}>
-            <Stack direction={{ sm: "column", md: "row" }}>
+            <Stack pl={"12px"} direction={{ sm: "column", md: "row" }}>
               <Stack direction={"row"} spacing={7} pr={2}>
                 {locale === "en" ? (
                   <a href={"/es" + "/" + pathname}>{locale}</a>
