@@ -3,12 +3,13 @@ import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Layout from "../components/layout.component";
+import CallToAction from "../components/call-to-action.component";
 
 const Home = () => {
   const { t } = useTranslation("common");
   return (
     <Layout>
-      <h1>sd</h1>
+      <CallToAction />
     </Layout>
   );
 };
