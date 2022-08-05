@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
+import useDownloader from "react-use-downloader";
 import {
   Container,
   Stack,
@@ -21,11 +21,16 @@ import Computer from "../assets/images/computer.gif";
 import { BsInfoCircle } from "react-icons/bs";
 const PdfModal = dynamic(import("./pdf-modal.component"), { ssr: false });
 
+const fileUrl = "/Derian_Sibaja_CV.pdf";
+const filename = "Derian_Sibaja_CV.pdf";
+
 const CallToAction = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { download } = useDownloader();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSmallDevice] = useMediaQuery("(min-width: 1280px)");
   const infoIcon = <BsInfoCircle h={4} w={4} color="black" />;
+
   return (
     <Fade in>
       <Container maxW="7xl">
@@ -80,6 +85,10 @@ const CallToAction = () => {
                 </Button>
               </Link>
               <Button onClick={onOpen}>Open Modal</Button>
+
+              <button onClick={() => download(fileUrl, filename)}>
+                download CV
+              </button>
             </Stack>
           </Stack>
           <Flex

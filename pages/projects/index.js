@@ -1,3 +1,4 @@
+import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Layout from "../../components/layout.component";
