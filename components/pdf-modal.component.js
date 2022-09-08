@@ -9,16 +9,15 @@ import {
   ModalBody,
   Button,
   ModalFooter,
-  Skeleton,
-  Fade,
 } from "@chakra-ui/react";
-
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 import workerSrc from "../pdf-worker";
 
-const PdfModal = ({ isOpen, onClose }) => {
+const PdfModal = ({ isOpen, onClose, onDownload }) => {
   pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
   const [, setNumPages] = useState(null);
   const [pageNumber] = useState(1);
+  const downloadIcon = <BsFillArrowDownCircleFill h={8} w={8} color="black" />;
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -47,10 +46,12 @@ const PdfModal = ({ isOpen, onClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <Button variant="ghost" onClick={onClose}>
             Close
           </Button>
-          <Button variant="ghost">Download</Button>
+          <Button colorScheme="blue" mr={3} onClick={onDownload}>
+            {downloadIcon}
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

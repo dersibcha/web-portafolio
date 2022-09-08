@@ -4,12 +4,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Layout from "../components/layout.component";
 import CallToAction from "../components/call-to-action.component";
+import Skills from "../components/skills.component";
 
 const Home = () => {
   const { t } = useTranslation("common");
   return (
     <Layout>
       <CallToAction />
+      <Skills />
     </Layout>
   );
 };

@@ -9,7 +9,6 @@ import {
   Text,
   Button,
   useMediaQuery,
-  Skeleton,
   Fade,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -18,7 +17,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import Computer from "../assets/images/computer.gif";
-import { BsInfoCircle } from "react-icons/bs";
+import { BsFillArrowDownCircleFill, BsFillEnvelopeFill } from "react-icons/bs";
 const PdfModal = dynamic(import("./pdf-modal.component"), { ssr: false });
 
 const fileUrl = "/Derian_Sibaja_CV.pdf";
@@ -29,7 +28,8 @@ const CallToAction = () => {
   const { download } = useDownloader();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSmallDevice] = useMediaQuery("(min-width: 1280px)");
-  const infoIcon = <BsInfoCircle h={4} w={4} color="black" />;
+  const downloadIcon = <BsFillArrowDownCircleFill h={4} w={4} color="blue" />;
+  const envelopeIcon = <BsFillEnvelopeFill h={4} w={4} color="blue" />;
 
   return (
     <Fade in>
@@ -64,31 +64,36 @@ const CallToAction = () => {
               spacing={{ base: 4, sm: 6 }}
               direction={{ base: "column", sm: "row" }}
             >
-              <Button
-                rounded="xl"
-                size="lg"
-                fontWeight="normal"
-                px={6}
-                colorScheme="red"
-                bg="brand.100"
-                _hover={{ bg: "brand.200" }}
-              ></Button>
               <Link href="/contact" passHref>
                 <Button
                   rounded="xl"
                   size="lg"
                   fontWeight="normal"
                   px={6}
-                  leftIcon={infoIcon}
+                  leftIcon={envelopeIcon}
                 >
                   Contact me
                 </Button>
               </Link>
-              <Button onClick={onOpen}>Open Modal</Button>
+              <Button
+                rounded="xl"
+                size="lg"
+                fontWeight="normal"
+                px={6}
+                onClick={onOpen}
+              >
+                Resume
+              </Button>
 
-              <button onClick={() => download(fileUrl, filename)}>
-                download CV
-              </button>
+              <Button
+                rounded="xl"
+                size="lg"
+                fontWeight="normal"
+                px={2}
+                onClick={() => download(fileUrl, filename)}
+              >
+                {downloadIcon}
+              </Button>
             </Stack>
           </Stack>
           <Flex
@@ -118,7 +123,11 @@ const CallToAction = () => {
           </Flex>
         </Stack>
       </Container>
-      <PdfModal isOpen={isOpen} onClose={onClose} />
+      <PdfModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onDownload={() => download(fileUrl, filename)}
+      />
     </Fade>
   );
 };
