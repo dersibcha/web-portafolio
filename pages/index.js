@@ -7,6 +7,7 @@ import CallToAction from "../components/call-to-action.component";
 import Skills from "../components/skills.component";
 
 const Home = () => {
+  //console.log("env: " + JSON.stringify(getEnvVariables()));
   const { t } = useTranslation("common");
   return (
     <Layout>
