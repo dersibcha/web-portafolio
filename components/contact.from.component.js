@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 
@@ -21,6 +22,8 @@ const ContactForm = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm();
+
+  const toast = useToast();
 
   const onSubmit = (data) => {
     return new Promise((resolve) => {
@@ -34,7 +37,21 @@ const ContactForm = () => {
             body: JSON.stringify(data),
           });
           await response.json();
+          toast({
+            title: "Email sent",
+            description: "I will contact you a soon as posible",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
         } catch (error) {
+          toast({
+            title: "Error",
+            description: "Oops something happened",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
         } finally {
           reset();
 
@@ -148,7 +165,7 @@ const ContactForm = () => {
                 _placeholder={{
                   color: "gray.500",
                 }}
-                {...register("text", {
+                {...register("message", {
                   required: "This is required",
                 })}
               />
