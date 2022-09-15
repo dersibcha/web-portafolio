@@ -2,12 +2,13 @@ import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Layout from "../../components/layout.component";
+import ProjectsPage from "../../components/projects.page.component";
 
 const Projects = () => {
   const { t } = useTranslation("common");
   return (
     <Layout>
-      <h1>Projects</h1>
+      <ProjectsPage />
     </Layout>
   );
 };

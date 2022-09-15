@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Stack,
@@ -6,9 +7,8 @@ import {
   Container,
   SimpleGrid,
 } from "@chakra-ui/react";
-import ContactForm from "./contact.from.component";
 
-const ContactPage = () => {
+const ProjectsPage = () => {
   return (
     <Box position={"relative"}>
       <Container
@@ -23,22 +23,23 @@ const ContactPage = () => {
             lineHeight={1.1}
             fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
           >
-            Feel free{" "}
+            See my{" "}
             <Text
               as={"span"}
               bgGradient="linear(to-r, red.400,pink.400)"
               bgClip="text"
             >
-              to
+              GitHub
             </Text>{" "}
-            Contact me
+            projects
           </Heading>
-          <Stack direction={"row"} spacing={4} align={"center"}></Stack>
+          <Stack direction={"row"} spacing={4} align={"center"}>
+            text
+          </Stack>
         </Stack>
-        <ContactForm />
       </Container>
     </Box>
   );
 };
 
-export default ContactPage;
+export default ProjectsPage;

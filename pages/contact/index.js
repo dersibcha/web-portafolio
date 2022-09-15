@@ -2,13 +2,13 @@ import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Layout from "../../components/layout.component";
-import Contact from "../../components/contact.page.component";
+import ContactPage from "../../components/contact.page.component";
 
-const Projects = () => {
+const Contact = () => {
   const { t } = useTranslation("common");
   return (
     <Layout>
-      <Contact />
+      <ContactPage />
     </Layout>
   );
 };
@@ -22,4 +22,4 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-export default Projects;
+export default Contact;

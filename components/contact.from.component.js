@@ -36,18 +36,28 @@ const ContactForm = () => {
             },
             body: JSON.stringify(data),
           });
-          await response.json();
-          toast({
-            title: "Email sent",
-            description: "I will contact you a soon as posible",
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
+          let resp = await response.json();
+          if (resp?.error) {
+            toast({
+              title: "Error",
+              description: "Oops something happened " + resp.error,
+              status: "error",
+              duration: 3000,
+              isClosable: true,
+            });
+          } else {
+            toast({
+              title: "Email sent",
+              description: "I will contact you a soon as posible",
+              status: "success",
+              duration: 3000,
+              isClosable: true,
+            });
+          }
         } catch (error) {
           toast({
             title: "Error",
-            description: "Oops something happened",
+            description: "Oops something happened " + error,
             status: "error",
             duration: 3000,
             isClosable: true,
