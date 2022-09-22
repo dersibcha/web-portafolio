@@ -10,10 +10,12 @@ import {
 } from "@chakra-ui/react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { FaMoon, FaSun } from "react-icons/fa";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import Logo from "../assets/images/deviam.png";
 
 const NavLink = ({ children, linkto }) => (
   <Box
@@ -45,7 +47,9 @@ const Navbar = () => {
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={8} alignItems={"center"}>
             <HStack as={"nav"} spacing={4} display={"flex"}>
-              <NavLink linkto={"/" + locale}>Logo</NavLink>
+              <NavLink linkto={"/" + locale}>
+                <Image alt="Logo Image" src={Logo} priority />
+              </NavLink>
             </HStack>
           </HStack>
 

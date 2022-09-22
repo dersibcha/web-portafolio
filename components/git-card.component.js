@@ -6,7 +6,6 @@ import {
   Center,
   Text,
   Stack,
-  Button,
   Badge,
   useColorModeValue,
   chakra,
@@ -22,28 +21,29 @@ const GitCard = ({ name, description, language, url }) => {
         rounded={"lg"}
         p={6}
         textAlign={"center"}
+        minHeight={"250px"}
       >
-        <Heading fontSize={"2xl"} fontFamily={"body"}>
+        <Heading pb={5} fontSize={"2xl"} fontFamily={"body"}>
           {name}
         </Heading>
-        <Text
-          textAlign={"center"}
-          color={useColorModeValue("gray.700", "gray.400")}
-          px={3}
-        >
-          {description}
-        </Text>
-
-        <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue("gray.50", "gray.800")}
-            fontWeight={"400"}
+        {description != "" && (
+          <Text textAlign={"center"} px={3}>
+            {description}
+          </Text>
+        )}
+        {language != "null" && (
+          <Stack
+            align={"center"}
+            justify={"center"}
+            direction={"row"}
+            mt={6}
+            pb={5}
           >
-            {language}
-          </Badge>
-        </Stack>
+            <Badge px={2} py={1} pb fontWeight={"400"}>
+              {language}
+            </Badge>
+          </Stack>
+        )}
 
         <Stack
           align={"center"}
@@ -55,14 +55,14 @@ const GitCard = ({ name, description, language, url }) => {
             px="3"
             py="2"
             bg="blue.400"
-            rounded="md"
+            rounded="2xl"
             _hover={{ bg: "blue.500" }}
             fontSize={"sm"}
-            rounded={"full"}
             cursor={"pointer"}
             as={"a"}
             target="_blank"
             href={url}
+            color={"white"}
             transition={"background 0.3s ease"}
             _focus={{
               bg: "blue.500",

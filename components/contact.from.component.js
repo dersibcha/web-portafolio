@@ -9,7 +9,6 @@ import {
   InputGroup,
   Button,
   FormControl,
-  FormLabel,
   FormErrorMessage,
   useToast,
 } from "@chakra-ui/react";
@@ -88,7 +87,7 @@ const ContactForm = () => {
           Contact
           <Text
             as={"span"}
-            bgGradient="linear(to-r, red.400,pink.400)"
+            bgGradient="linear(to-r, #977855,#ad9883)"
             bgClip="text"
           >
             !
@@ -101,7 +100,7 @@ const ContactForm = () => {
             <FormControl isInvalid={errors.email}>
               <Text
                 as={"span"}
-                bgGradient="linear(to-r, red.400,pink.400)"
+                bgGradient="linear(to-r, #977855,#ad9883)"
                 bgClip="text"
               >
                 Email
@@ -190,10 +189,10 @@ const ContactForm = () => {
             fontFamily={"heading"}
             mt={8}
             w={"full"}
-            bgGradient="linear(to-r, red.400,pink.400)"
+            bg="#977855"
             color={"white"}
             _hover={{
-              bgGradient: "linear(to-r, red.400,pink.400)",
+              bg: "#aa8e6f",
               boxShadow: "xl",
             }}
           >

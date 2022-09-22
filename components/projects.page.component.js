@@ -6,7 +6,6 @@ import {
   Text,
   Container,
   SimpleGrid,
-  Grid,
   Center,
   Select,
 } from "@chakra-ui/react";
@@ -62,13 +61,7 @@ const ProjectsPage = ({ data }) => {
 
   return (
     <Box position={"relative"}>
-      <Container
-        as={SimpleGrid}
-        maxW={"7xl"}
-        columns={{ base: 1, md: 2 }}
-        spacing={{ base: 10, lg: 32 }}
-        py={{ base: 10, sm: 20, lg: 32 }}
-      >
+      <Container as={SimpleGrid} maxW={"7xl"} columns={{ base: 1, md: 2 }}>
         <Stack spacing={{ base: 10, md: 20 }}>
           <Heading
             lineHeight={1.1}
@@ -173,29 +166,28 @@ const ProjectsPage = ({ data }) => {
                 <option value="30">30</option>
               </Select>
             </Center>
-
-            <Grid
-              gap={3}
-              templateColumns="repeat(5, 1fr)"
-              templateRows="repeat(2, 1fr)"
-            >
-              {data
-                ?.filter(
-                  (project) => project.private == false && project.fork == false
-                )
-                .slice(offset, offset + pageSize)
-                .map((project) => (
-                  <GitCard
-                    key={project?.id}
-                    name={project?.name}
-                    description={project?.description}
-                    language={project?.language}
-                    url={project?.html_url}
-                  />
-                ))}
-            </Grid>
           </Stack>
         </Stack>
+      </Container>
+      <Container as={SimpleGrid} maxW={"7xl"}>
+        <Box>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 4, xl: 5 }} spacing={10}>
+            {data
+              ?.filter(
+                (project) => project.private == false && project.fork == false
+              )
+              .slice(offset, offset + pageSize)
+              .map((project) => (
+                <GitCard
+                  key={project?.id}
+                  name={project?.name}
+                  description={project?.description}
+                  language={project?.language}
+                  url={project?.html_url}
+                />
+              ))}
+          </SimpleGrid>
+        </Box>
       </Container>
     </Box>
   );
