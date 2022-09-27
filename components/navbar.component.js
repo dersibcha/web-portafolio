@@ -48,7 +48,13 @@ const Navbar = () => {
           <HStack spacing={8} alignItems={"center"}>
             <HStack as={"nav"} spacing={4} display={"flex"}>
               <NavLink linkto={"/" + locale}>
-                <Image alt="Logo Image" src={Logo} priority />
+                <Image
+                  width={131}
+                  height={28}
+                  alt="Logo Image"
+                  src={Logo}
+                  priority
+                />
               </NavLink>
             </HStack>
           </HStack>

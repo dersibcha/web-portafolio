@@ -66,6 +66,8 @@ const ProjectsPage = ({ data }) => {
           <Heading
             lineHeight={1.1}
             fontSize={{ base: "3xl", sm: "4xl", md: "5xl", lg: "6xl" }}
+            pb={10}
+            pt={20}
           >
             See my{" "}
             <Text
