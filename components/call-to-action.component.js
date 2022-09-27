@@ -57,8 +57,8 @@ const CallToAction = () => {
               <Text as="span">Software Engineer</Text>
             </Heading>
             <Text color="gray.500">
-              Hello! I'm a Full-Stack Software Engineer based in Heredia, Costa
-              Rica. Passionate about Cloud and Web technologies.
+              Hello! I&apos;m a Full-Stack Software Engineer based in Heredia,
+              Costa Rica. Passionate about Cloud and Web technologies.
             </Text>
             <Stack
               spacing={{ base: 4, sm: 6 }}
